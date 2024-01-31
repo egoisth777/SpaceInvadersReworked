@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GlobalController : MonoBehaviour
@@ -75,8 +76,9 @@ public class GlobalController : MonoBehaviour
         // TODO: Display "GameOver"
         if(!isGameOver)
         {
-            isGameOver = true;
             GameOverText.text = "Game Over";
+            Invoke("SpawnDelayLose", 5);
+            
         }
     }
 
@@ -84,9 +86,20 @@ public class GlobalController : MonoBehaviour
     {
         if (!isGameOver)
         {
-            isGameOver = true;
             GameOverText.text = "Game Win";
+            Invoke("SpawnDelayWin", 5);
         }
+    }
+
+    private void SpawnDelayLose()
+    {
+        isGameOver = true;
+        SceneManager.LoadScene("MainTitlePage");
+    }
+    private void SpawnDelayWin()
+    {
+        isGameOver = true;
+        SceneManager.LoadScene("MainTitlePage");
     }
 
     public void Reset()
