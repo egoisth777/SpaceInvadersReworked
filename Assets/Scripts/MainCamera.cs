@@ -12,16 +12,16 @@ public class MainCamera : MonoBehaviour
 
     void Start()
     {
-        // Save the original position of the camera
+        // Save the original position of the camera, set it to the transform.position at the beginning
         originalPosition = transform.position;
     }
 
-    void Update()
+    void Update() // Check everytime if the shake event will take place
     {
         // Check if the shake effect is active
         if (shakeTimer > 0)
         {
-            // Generate a random offset based on Perlin noise
+            // Generate a random offset based on Perlin Noise
             Vector3 randomOffset = Random.insideUnitSphere * shakeIntensity;
 
             // Apply the offset to the camera position

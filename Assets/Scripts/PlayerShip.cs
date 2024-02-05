@@ -66,9 +66,10 @@ public class PlayerShip : MonoBehaviour
 
     public void OnShoot()
     {
+        // spawn a new bullet in front of the player ship / invader
         Vector3 spawnPos = gameObject.transform.position + new Vector3(0.0f, 0.0f, 0.7f);
+        
         // instantiate the Bullet
-
         GameObject obj = Instantiate(bullet, spawnPos, Quaternion.identity) as GameObject;
         obj.GetComponent<Bullet>().OnShoot(new Vector3(0.0f, 0.0f, 1.5f).normalized, bulletSpeed);
 
@@ -79,7 +80,6 @@ public class PlayerShip : MonoBehaviour
     {
         GameObject.Find("GlobalController").GetComponent<GlobalController>().OnPlayerDead();
         Destroy(gameObject);
-
         mainCamera.StartShake();
     }
 }

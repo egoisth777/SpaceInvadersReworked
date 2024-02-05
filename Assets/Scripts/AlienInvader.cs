@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.SocialPlatforms;
 
 
 public class AlienInvader : MonoBehaviour
 {
+    public AudioClip InvaderDeathSFX;
     public int point;
     public float bulletSpeed;
 
@@ -35,9 +37,14 @@ public class AlienInvader : MonoBehaviour
 
     public void OnDead()
     {
+        // play sound when the invader is dead
+        if (InvaderDeathSFX != null)
+        {
+        AudioSource.PlayClipAtPoint(InvaderDeathSFX, gameObject.transform.position);
+        }
         transform.parent.gameObject.GetComponent<InvaderRowController>().InvaderDead();
         GameObject.Find("GlobalController").GetComponent<GlobalController>().IncreasePoint(point);
-
+        
         Destroy(gameObject);
     }
 

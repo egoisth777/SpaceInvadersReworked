@@ -47,7 +47,7 @@ public class GlobalController : MonoBehaviour
     {
         lifeIcons = GameObject.FindObjectOfType<LifeIcons>();
         GameOverText = GameObject.Find("GameOverText").GetComponent<Text>();
-        rockList = new List<GameObject>();
+        rockList = new List<GameObject>(); // create a list of rock that is destructable
         scoreGUI = GetComponentInChildren<Text>();
         OnGameStart();
     }
@@ -162,6 +162,11 @@ public class GlobalController : MonoBehaviour
         scoreGUI.text = PlayerScore.ToString();
     }
 
+    /// <summary>
+    /// Handles the event when the player's ship dies.
+    /// Play the death sound for roughly about 5 seconds
+    /// </summary>
+    /// <param name="params">No parameters needed.</param>
     public void OnPlayerDead()
     {
         RemainingLife -= 1;

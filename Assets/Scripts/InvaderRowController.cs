@@ -170,7 +170,7 @@ public class InvaderRowController : MonoBehaviour
 
     private void InvaderShoot()
     {
-        if(!globalController.isGameOver) 
+        if(!globalController.isGameOver)  // if game isn't completed at the time
         {
             int count = Random.Range(1, Mathf.Min(4, remainInvaders));
 
